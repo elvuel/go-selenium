@@ -461,6 +461,13 @@ func (wd *remoteWebDriver) ResizeWindow(name string, to Size) error {
 	return err
 }
 
+func (wd *remoteWebDriver) MaximizeWindow(name string) error {
+	url := wd.url("/session/%s/window/%s/maximize", wd.id, name)
+	var data []byte
+	_, err := wd.send("POST", url, data)
+	return err
+}
+
 func (wd *remoteWebDriver) SwitchFrame(frame string) error {
 	params := map[string]string{"id": frame}
 	return wd.voidCommand("/session/%s/frame", params)

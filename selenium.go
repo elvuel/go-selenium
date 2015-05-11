@@ -179,6 +179,9 @@ type WebDriver interface {
 	// ResizeWindow resizes the named window.
 	ResizeWindow(name string, to Size) error
 
+	// Maximize the specified window if not already maximized.
+	MaximizeWindow(name string) error
+
 	// Navigation
 	/* Open url. */
 	Get(url string) error
